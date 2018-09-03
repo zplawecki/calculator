@@ -1,4 +1,4 @@
-const calculate = (n1, opeator, n2) => {
+const Calculator = (n1, opeator, n2) => {
     let result = ''
     
     if (operator === 'add') {
