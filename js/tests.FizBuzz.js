@@ -25,7 +25,7 @@ function print(a) {
 //     test_printing(print(a), "FizzBuzz");
 // }
 
-test_printing(print(1), "1");
-test_printing(print(3), "Fizz");
-test_printing(print(5), "Buzz");
-test_printing(print(15), "FizzBuzz");
+console.log(test_printing(print(1), "1"));
+console.log(test_printing(print(3), "Fizz"));
+console.log(test_printing(print(5), "Buzz"));
+console.log(test_printing(print(15), "FizzBuzz"));
