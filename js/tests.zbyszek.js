@@ -14,7 +14,7 @@ function add(a, b){
     return result;
 }
 
-test_adding(add(1,1), 2)
+test_adding(add(1,1), 2);
 test_adding(add(2,2), 4);
 test_adding(add(2,3), 7);
 
