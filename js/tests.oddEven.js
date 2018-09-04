@@ -16,6 +16,8 @@ function print(a) {
 
 }
 
-var a = 3;
-console.log(print(a));
-test_printing(print(a), "even");
+var a;
+for (a = 0; a <= 100; a++) {
+    console.log(print(a));
+    test_printing(print(a), "even");
+}
