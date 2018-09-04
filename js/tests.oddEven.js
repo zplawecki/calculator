@@ -9,10 +9,13 @@ function test_printing(result, expected) {
 
 function print(a) {
     if (a % 2 == 0) {
-        console.log("even");
+        return "even";
     }  else if (a % 2 != 0) {
-        console.log("odd");
+        return "odd";
     }
+
 }
 
-test_printing(print(100), "even");
+var a = 3;
+console.log(print(a));
+test_printing(print(a), "even");
