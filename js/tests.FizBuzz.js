@@ -14,6 +14,8 @@ function print(a) {
         return "Buzz";
     } else if ((a % 3 == 0) && (a % 5 == 0)) {
         return "FizzBuzz";
+    } else {
+        return a;
     }
 }
 
