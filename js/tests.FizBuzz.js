@@ -1,9 +1,9 @@
 function test_printing(result, expected) {
     if (result == expected) {
-        console.log("ok");
+        return "ok";
     }
     else {
-        console.log("fail");
+         return "fail";
     }
 }
 
@@ -15,5 +15,10 @@ function print(a) {
     } else if ((a % 3 == 0) && (a % 5 == 0)) {
         return "FizzBuzz";
     }
+}
 
+var a;
+for (a = 1; a <= 100; a++) {
+    console.log(print(a));
+    test_printing(print(a), "FizzBuzz");
 }
