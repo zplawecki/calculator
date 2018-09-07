@@ -11,14 +11,16 @@ function test_string(s) {
 }
 
 function add(s) {
-    var nums = [];
-    nums.push(s.split(","));
-    let sum = 0;
-    for (i = 0; i < nums.length; i++) {
-        sum+= parseInt(nums[i]);
-    }
-    return sum;
+    const numbers = s
+        .replace(/(\r\n|\n|\r)/gm, ',')
+        .split(',')
+        .map(n => parseInt(n, 10));
+    
+    if(numbers.some(n => Number.isNaN(n))) throw new Error('Not a number');
+    if(numbers.some(n => n < 0)) throw new Error('Negatives not allowed');
+
+    return numbers.reduce((s, n) => s + n);
 }
 
-s = "2,3";
-test_string(s);
+s = "2,2";
+add(s);
