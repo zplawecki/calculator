@@ -12,7 +12,6 @@ function test_string(s) {
 
 function add(s) {
     const numbers = s
-        .replace(/(\r\n|\n|\r)/gm, ',')
         .split(',')
         .map(n => parseInt(n, 10));
     
