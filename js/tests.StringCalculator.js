@@ -21,5 +21,4 @@ function add(s) {
     return numbers.reduce((s, n) => s + n);
 }
 
-s = "2,2";
-add(s);
+add("2,2");
