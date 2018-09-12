@@ -10,6 +10,11 @@ function test_game(score) {
     }
 }
 
+//Description:
+//Program asks for scores of 10 frames
+//Adds them to an array
+//Calculates final score from elements of array
+
 function enterNameAndScore() {
     var Input = require('prompt-input');
     var score = [];
@@ -25,7 +30,7 @@ function enterNameAndScore() {
     for (i = 0; i < 10; i++) {
         var scores = new Input({
             name: "score",
-            message: "Podaj wynik ramki nr: " + i
+            message: "Podaj wynik ramki nr " + i
         });
     
         scores.ask(function(answers) {
