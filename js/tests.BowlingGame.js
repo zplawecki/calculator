@@ -11,7 +11,7 @@ function test_game(score) {
 }
 
 //Description:
-//Program asks for scores of 10 frames
+//Program asks for scores of 10 frames (in loop)
 //Adds them to an array
 //Calculates final score from elements of array
 
@@ -37,7 +37,6 @@ function enterNameAndScore() {
             score.push(answers);
         });
     }
-
 }
 
 function score(s) {
@@ -51,4 +50,3 @@ enterNameAndScore();
 // s = "10,10,10,10,10,10,10,10,10,10,10,10,10";
 // console.log(test_game(score(s)));
 // console.log(score(s));
-
