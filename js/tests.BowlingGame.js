@@ -11,11 +11,11 @@ function test_game(score) {
 }
 
 //Description:
-//Program asks for scores of 10 frames (in loop)
+//Program returns 11 random numbers from 0 to 10 and assignes them as frame score
 //Adds them to an array
 //Calculates final score from elements of array
 
-function enterNameAndScore() {
+function enterName() {
     var Input = require('prompt-input');
     var score = [];
     var name = new Input({
@@ -27,26 +27,17 @@ function enterNameAndScore() {
         console.log("Hello " + answers);
     });
 
-    for (i = 0; i < 10; i++) {
-        var scores = new Input({
-            name: "score",
-            message: "Podaj wynik ramki nr " + i
-        });
-    
-        scores.ask(function(answers) {
-            score.push(answers);
-        });
+    for (i = 0; i < 11; i++) {
+       frameScore = Math.floor((Math.random() * 10 ) +1);
+       score.push(frameScore);
     }
 }
 
 function score(s) {
-    const score = s
-        .split(',')
-        .map(n => parseInt(n, 10));
+    const score = s;
     return score.reduce((s, n) => s + n);
 }
 
-enterNameAndScore();
-// s = "10,10,10,10,10,10,10,10,10,10,10,10,10";
-// console.log(test_game(score(s)));
-// console.log(score(s));
+enterName();
+console.log(test_game(score(s)));
+console.log(score(s));
