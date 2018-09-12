@@ -23,6 +23,6 @@ function add(s) {
     return numbers.reduce((s, n) => s + n);
 }
 
-s = "2,5";
+s = "2,5,8";
 console.log(test_string(s));
 console.log(add(s));
