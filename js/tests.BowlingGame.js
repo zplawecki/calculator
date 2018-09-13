@@ -39,9 +39,9 @@ function currentFrameScore() {
 }
 
 function enterFrameScore() {
-    currentFrameNumber = 0;
-    for (i = 0; i < 10; i++) {
-        currentFrameNumber =+ 1;
+    let currentFrameNumber = 0;
+    for (i = 1; i < 11; i++) {
+        currentFrameNumber = i;
         currentFrameScore();
         if ((currentFrameScore == 10) && (currentFrameNumber !=10)) {
             console.log("spare");
@@ -55,6 +55,7 @@ function enterFrameScore() {
         else if ((currentRollScore == 10) && (currentFrameNumber = 10)) {
             roll(10);
         }
+        console.log(currentFrameNumber);
     }
     console.log(scores.toString());
     return scores;
