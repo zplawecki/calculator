@@ -14,6 +14,14 @@ function test_game(score) {
 //Program returns 11 random numbers from 0 to 10 and assignes them as frame score
 //Adds them to an array
 //Calculates final score from elements of array
+//TODO:
+//two rolls for every turn
+//edgecases:
+//for strike - add bonus = score from next 2 rolls
+//for spare - add bonus = score from next roll
+//for 10th frame - extra roll for spare or strike (no more than 3 rolls total)
+
+
 var scores = [];
 function enterFrameScore() {
     for (i = 0; i < 11; i++) {
