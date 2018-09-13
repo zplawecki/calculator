@@ -21,12 +21,33 @@ function test_game(score) {
 //for spare - add bonus = score from next roll
 //for 10th frame - extra roll for spare or strike (no more than 3 rolls total)
 
-
 var scores = [];
+var currentFrameScore;
+var currentRollScore;
+var pinsLeft;
+
+function roll(pins) {
+    currentRollScore = Math.floor(Math.random() * pins);
+    scores.push(currentRollScore);
+    pinsLeft = 10 - currentRollScore;
+    return currentRollScore;
+}
+
+function currentFrameScore() {
+    let currentFrameScore = roll(10) + roll(pinsLeft);
+    return currentFrameScore;
+}
+
 function enterFrameScore() {
-    for (i = 0; i < 11; i++) {
-        var frameScore = Math.floor(Math.random() * 10);
-        scores.push(frameScore);
+    for (i = 0; i <= 10; i++) {
+        currentFrameScore();
+        if (currentFrameScore == 10) {
+            console.log("spare");
+        }
+        else if (currentRollScore == 10) {
+            console.log("strike");
+        }
+
     }
     console.log(scores.toString());
     return scores;
