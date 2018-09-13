@@ -15,29 +15,22 @@ function test_game(score) {
 //Adds them to an array
 //Calculates final score from elements of array
 
-function enterName() {
-    var Input = require('prompt-input');
-    var score = [];
-    var name = new Input({
-        name: "name",
-        message: "What is your name?"
-    });
-
-    name.ask(function(answers) {
-        console.log("Hello " + answers);
-    });
-
+function enterFrameScore() {
+    var scores = [];
     for (i = 0; i < 11; i++) {
-       frameScore = Math.floor((Math.random() * 10 ) +1);
-       score.push(frameScore);
+        var frameScore = Math.floor(Math.random() * 10);
+        scores.push(frameScore);
     }
+    console.log(scores.toString());
+    return scores;
 }
 
-function score(s) {
-    const score = s;
-    return score.reduce((s, n) => s + n);
+function score() {
+    var totalScore;
+    totalScore = scores.reduce((s, n) => s + n);
+    return totalScore;
 }
 
-enterName();
-console.log(test_game(score(s)));
-console.log(score(s));
+enterFrameScore();
+// console.log(test_game(score(s)));
+// console.log(score(s));
