@@ -39,15 +39,22 @@ function currentFrameScore() {
 }
 
 function enterFrameScore() {
+    currentFrameNumber = 0;
     for (i = 0; i < 10; i++) {
+        currentFrameNumber =+ 1;
         currentFrameScore();
-        if (currentFrameScore == 10) {
+        if ((currentFrameScore == 10) && (currentFrameNumber !=10)) {
             console.log("spare");
         }
-        else if (currentRollScore == 10) {
+        else if ((currentRollScore == 10) && (currentFrameNumber != 10)) {
             console.log("strike");
         }
-
+        else if ((currentFrameScore == 10) && (currentFrameNumber = 10)) {
+            roll(10);
+        }
+        else if ((currentRollScore == 10) && (currentFrameNumber = 10)) {
+            roll(10);
+        }
     }
     console.log(scores.toString());
     return scores;
