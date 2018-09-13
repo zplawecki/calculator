@@ -34,12 +34,12 @@ function roll(pins) {
 }
 
 function currentFrameScore() {
-    let currentFrameScore = roll(10) + roll(pinsLeft);
+    let currentFrameScore = roll(11) + roll(pinsLeft);
     return currentFrameScore;
 }
 
 function enterFrameScore() {
-    for (i = 0; i <= 10; i++) {
+    for (i = 0; i < 10; i++) {
         currentFrameScore();
         if (currentFrameScore == 10) {
             console.log("spare");
