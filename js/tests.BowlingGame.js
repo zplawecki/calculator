@@ -22,6 +22,7 @@ function test_game(score) {
 //for 10th frame - extra roll for spare or strike (no more than 3 rolls total)
 
 var scores = [];
+var frames = [];
 var currentFrameScore;
 var currentRollScore;
 var pinsLeft;
@@ -59,14 +60,18 @@ function roundsWithStrike(scores, val) {
     return indexes;
 }
 
+function groupRoundsInFrames() {
+    for(var i = 0; i < scores.length; i += 2) {
+        frames.push(scores.slice(i, i+2));
+    }
+    return frames;
+}
+
 function enterFrameScore() {
     for (i = 1; i < 11; i++) {
         currentFrameNumber++;
         currentFrameScore();
     }
-    console.log("Wynik ramki numer 5: "+scores[4]);
-    console.log("Wyniki: "+scores.toString());
-    console.log("Strike w rundzie numer: "+roundsWithStrike(scores, 10));
     return scores;
 }
 
@@ -77,5 +82,8 @@ function score(scores) {
 }
 
 enterFrameScore();
+console.log("Wynik rundy numer 5: "+scores[4]);
+console.log("Wyniki: "+frames.toString());
+console.log("Strike w rundzie numer: "+roundsWithStrike(scores, 10));
 console.log(test_game(score(scores)));
 console.log(score(scores));
