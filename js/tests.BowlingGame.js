@@ -25,6 +25,7 @@ var scores = [];
 var currentFrameScore;
 var currentRollScore;
 var pinsLeft;
+var currentFrameNumber = 1;
 
 function roll(pins) {
     currentRollScore = Math.floor(Math.random() * pins);
@@ -38,26 +39,34 @@ function currentFrameScore() {
     return currentFrameScore;
 }
 
-function enterFrameScore() {
-    let currentFrameNumber = 0;
-    for (i = 1; i < 11; i++) {
-        currentFrameNumber = i;
-        currentFrameScore();
-        if ((currentFrameScore == 10) && (currentFrameNumber !=10)) {
-            console.log("spare");
+function strikeBonus() {
+    for (var i=0; i < scores.length; i++) {
+        if (scores[i].name === 10) {
+            return scores[i];
         }
-        else if ((currentRollScore == 10) && (currentFrameNumber != 10)) {
-            console.log("strike");
-        }
-        else if ((currentFrameScore == 10) && (currentFrameNumber = 10)) {
-            roll(10);
-        }
-        else if ((currentRollScore == 10) && (currentFrameNumber = 10)) {
-            roll(10);
-        }
-        console.log(currentFrameNumber);
     }
-    console.log(scores.toString());
+}
+
+function spareBonus() {
+    return currentFrameScore + currentRollScore[i+1];
+}
+
+function roundsWithStrike(scores, val) {
+    var indexes = [], i;
+    for(i = 0; i < scores.length; i++)
+        if (scores[i] === val)
+        indexes.push(i+1);
+    return indexes;
+}
+
+function enterFrameScore() {
+    for (i = 1; i < 11; i++) {
+        currentFrameNumber++;
+        currentFrameScore();
+    }
+    console.log("Wynik ramki numer 5: "+scores[4]);
+    console.log("Wyniki: "+scores.toString());
+    console.log("Strike w rundzie numer: "+roundsWithStrike(scores, 10));
     return scores;
 }
 
