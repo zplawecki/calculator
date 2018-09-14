@@ -14,8 +14,6 @@ function test_game(score) {
 //Program returns 11 random numbers from 0 to 10 and assignes them as frame score
 //Adds them to an array
 //Calculates final score from elements of array
-//TODO:
-//two rolls for every turn
 //edgecases:
 //for strike - add bonus = score from next 2 rolls
 //for spare - add bonus = score from next roll
@@ -54,9 +52,10 @@ function spareBonus() {
 
 function framesWithStrike(scores, val) {
     var indexes = [], i;
-    for(i = 0; i < scores.length; i++)
+    for(i = 0; i < scores.length; i++) {
         if (scores[i] === val)
         indexes.push(i+1);
+    }
     return indexes;
 }
 
@@ -66,6 +65,14 @@ function groupRoundsInFrames(scores, size) {
     frames.push(pairs);
     return frames;
 }
+
+// function frameSum(frames) {
+//     var sum;
+//     for (i=0; i < frames.length; i++ ) {
+//         sum = frames.reduce((s, n) => s + n);
+//     }
+//     return sum;
+// }
 
 function enterFrameScore() {
     for (i = 1; i < 11; i++) {
@@ -83,6 +90,7 @@ function score(scores) {
 
 enterFrameScore();
 console.log("Wynik rundy numer 5: "+scores[4]);
+// console.log("Wyniki w ramkach: "+frameSum(frames));
 console.log(groupRoundsInFrames(scores, 2));
 console.log("Strike w ramce numer: "+framesWithStrike(frames, 10));
 console.log(test_game(score(scores)));
