@@ -52,7 +52,7 @@ function spareBonus() {
     return currentFrameScore + currentRollScore[i+1];
 }
 
-function roundsWithStrike(scores, val) {
+function framesWithStrike(scores, val) {
     var indexes = [], i;
     for(i = 0; i < scores.length; i++)
         if (scores[i] === val)
@@ -60,10 +60,10 @@ function roundsWithStrike(scores, val) {
     return indexes;
 }
 
-function groupRoundsInFrames() {
-    for(var i = 0; i < scores.length; i += 2) {
-        frames.push(scores.slice(i, i+2));
-    }
+function groupRoundsInFrames(scores, size) {
+    var frames = [];
+    pairs = scores.map((x, i) => i % size == 0 && scores.slice(i, i + size)).filter(x => x);
+    frames.push(pairs);
     return frames;
 }
 
@@ -83,7 +83,7 @@ function score(scores) {
 
 enterFrameScore();
 console.log("Wynik rundy numer 5: "+scores[4]);
-console.log("Wyniki: "+frames.toString());
-console.log("Strike w rundzie numer: "+roundsWithStrike(scores, 10));
+console.log(groupRoundsInFrames(scores, 2));
+console.log("Strike w ramce numer: "+framesWithStrike(frames, 10));
 console.log(test_game(score(scores)));
 console.log(score(scores));
