@@ -15,12 +15,16 @@ function test_game(score) {
 //Adds them to an array
 //Calculates final score from elements of array
 //edgecases:
-//for strike - add bonus = score from next 2 rolls
+//for strike - add bonus = score from next 2 rolls (next frame)
 //for spare - add bonus = score from next roll
 //for 10th frame - extra roll for spare or strike (no more than 3 rolls total)
+//find frame mini-array (pair) which sum = 10 AND single element != 10
+//find frame which index = 10
+//find frame which single element = 10
 
 var scores = [];
 var frames = [];
+var pairs;
 var currentFrameScore;
 var currentRollScore;
 var pinsLeft;
@@ -38,25 +42,17 @@ function currentFrameScore() {
     return currentFrameScore;
 }
 
-function strikeBonus() {
-    for (var i=0; i < scores.length; i++) {
-        if (scores[i].name === 10) {
-            return scores[i];
-        }
-    }
+function strikeBonus(arr, val) {
+    var indexes = [], i = -1;
+    for(i = 0; i < scores.length; i++)
+        if (arr[i] === 10)
+            indexes.push(i+1);
+    return indexes;
 }
 
 function spareBonus() {
+    
     return currentFrameScore + currentRollScore[i+1];
-}
-
-function framesWithStrike(scores, val) {
-    var indexes = [], i;
-    for(i = 0; i < scores.length; i++) {
-        if (scores[i] === val)
-        indexes.push(i+1);
-    }
-    return indexes;
 }
 
 function groupRoundsInFrames(scores, size) {
@@ -66,13 +62,13 @@ function groupRoundsInFrames(scores, size) {
     return frames;
 }
 
-// function frameSum(frames) {
-//     var sum;
-//     for (i=0; i < frames.length; i++ ) {
-//         sum = frames.reduce((s, n) => s + n);
-//     }
-//     return sum;
-// }
+function frameSum(frames) {
+    var sum;
+    for (i=0; i < frames.length; i++ ) {
+        sum = frames.reduce((s, n) => s + n);
+    }
+    return sum;
+}
 
 function enterFrameScore() {
     for (i = 1; i < 11; i++) {
@@ -89,9 +85,9 @@ function score(scores) {
 }
 
 enterFrameScore();
-console.log("Wynik rundy numer 5: "+scores[4]);
-// console.log("Wyniki w ramkach: "+frameSum(frames));
+console.log("Wynik rzutu numer 5: "+scores[4]);
+console.log("Strike w rzutach: "+strikeBonus(scores, 10));
+// console.log("Wyniki w ramkach: "+frameSum(5));
 console.log(groupRoundsInFrames(scores, 2));
-console.log("Strike w ramce numer: "+framesWithStrike(frames, 10));
 console.log(test_game(score(scores)));
 console.log(score(scores));
