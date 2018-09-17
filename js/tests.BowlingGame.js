@@ -51,20 +51,20 @@ function strikeBonus(arr, val) {
 }
 
 function spareBonus() {
-    
+    //TODO
     return currentFrameScore + currentRollScore[i+1];
 }
 
-function groupRoundsInFrames(scores, size) {
+function groupThrowsInFrames(scores, size) {
     var frames = [];
     pairs = scores.map((x, i) => i % size == 0 && scores.slice(i, i + size)).filter(x => x);
     frames.push(pairs);
     return frames;
 }
 
-function frameSum(frames) {
+function frameSum(i) {
     var sum;
-    for (i=0; i < frames.length; i++ ) {
+    for (i=0; i < scores.length; i++ ) {
         sum = frames.reduce((s, n) => s + n);
     }
     return sum;
@@ -88,6 +88,6 @@ enterFrameScore();
 console.log("Wynik rzutu numer 5: "+scores[4]);
 console.log("Strike w rzutach: "+strikeBonus(scores, 10));
 // console.log("Wyniki w ramkach: "+frameSum(5));
-console.log(groupRoundsInFrames(scores, 2));
+console.log(groupThrowsInFrames(scores, 2));
 console.log(test_game(score(scores)));
-console.log(score(scores));
+console.log("Suma punktów: "+score(scores));
